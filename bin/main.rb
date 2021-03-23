@@ -10,24 +10,23 @@ player2 = gets.chomp.capitalize
 puts "\n#{player1} will play with X and #{player2} will play with O"
 
 puts "\nLets Start!"
-puts "[press ENTER to start]"
+puts '[press ENTER to start]'
 gets
 
 player_turn = player1
 cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+(0..cells.length - 1).each do |_i|
+  system('clear')
+  system('cls')
 
-for i in (0..cells.length - 1) do
-  system ("clear")
-  system ("cls")
-
-  puts "+---+---+---+"
+  puts '+---+---+---+'
   puts "| #{cells[0]} | #{cells[1]} | #{cells[2]} |"
-  puts "+---+---+---+"
+  puts '+---+---+---+'
   puts "| #{cells[3]} | #{cells[4]} | #{cells[5]} |"
-  puts "+---+---+---+"
+  puts '+---+---+---+'
   puts "| #{cells[6]} | #{cells[7]} | #{cells[8]} |"
-  puts "+---+---+---+"
+  puts '+---+---+---+'
 
   puts "\n"
 
@@ -36,7 +35,7 @@ for i in (0..cells.length - 1) do
   puts "\nPlease select an available cell from the board:"
   cell = gets.chomp
 
-  while !(cell !~ /\D/) || cell.empty?
+  while (cell =~ /\D/) || cell.empty?
     puts "\nInvalid move. please enter a number from 1-9"
     cell = gets.chomp
   end
@@ -48,19 +47,18 @@ for i in (0..cells.length - 1) do
     cells[cell.to_i - 1] = 'O'
     player_turn = player1
   end
-
 end
 
-system ("clear")
-system ("cls")
+system('clear')
+system('cls')
 
-puts "+---+---+---+"
+puts '+---+---+---+'
 puts "| #{cells[0]} | #{cells[1]} | #{cells[2]} |"
-puts "+---+---+---+"
+puts '+---+---+---+'
 puts "| #{cells[3]} | #{cells[4]} | #{cells[5]} |"
-puts "+---+---+---+"
+puts '+---+---+---+'
 puts "| #{cells[6]} | #{cells[7]} | #{cells[8]} |"
-puts "+---+---+---+"
+puts '+---+---+---+'
 
 puts "\nCONGRATULATIONS!"
 
