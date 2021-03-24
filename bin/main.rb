@@ -49,5 +49,4 @@ module TicTacToe
   puts game.show_board
 
   puts game.result
-
 end

@@ -12,7 +12,7 @@ module TicTacToe
     # PUBLIC METHODS ==================================================
 
     def valid_cell?(cell)
-      cell !~ /\D/ && !cell.empty? && @board[cell.to_i - 1] !~ /\D/ ? true : false
+      cell !~ /\D/ && !cell.empty? && @board[cell.to_i - 1] !~ /\D/ && cell.to_i.positive? && cell.to_i < 10
     end
 
     def set_position(cell, player)
@@ -20,9 +20,11 @@ module TicTacToe
       check(player)
     end
 
+    # rubocop:disable Layout/LineLength
     def show_board
       "+---+---+---+\n| #{@board[0]} | #{@board[1]} | #{@board[2]} |\n+---+---+---+\n| #{@board[3]} | #{@board[4]} | #{@board[5]} |\n+---+---+---+\n| #{@board[6]} | #{@board[7]} | #{@board[8]} |\n+---+---+---+\n\n"
     end
+    # rubocop:enable Layout/LineLength
 
     # PRIVATE METHODS =================================================
 
@@ -36,26 +38,24 @@ module TicTacToe
       @result = "\nIt's a TIE!\n\nGame is Over! That was a great game!"
     end
 
+    def line_check(cell1, cell2, cell3)
+      @winner_letter = @board[cell1] == @board[cell2] && @board[cell1] == @board[cell3] ? @board[cell1] : @winner_letter
+    end
+
     def check(player)
-      if @board[0] == @board[1] && @board[0] == @board[2]
-        @winner_letter = @board[0]
+      # X axis lines
+      line_check(0, 1, 2)
+      line_check(3, 4, 5)
+      line_check(6, 7, 8)
 
-      elsif @board[0] == @board[3] && @board[3] == @board[6] || @board[0] == @board[4] && @board[4] == @board[8]
-        @winner_letter = @board[0]
+      # Y axis lines
+      line_check(0, 3, 6)
+      line_check(1, 4, 7)
+      line_check(2, 5, 8)
 
-      elsif @board[1] == @board[4] && @board[1] == @board[7]
-        @winner_letter = @board[1]
-
-      elsif @board[2] == @board[4] && @board[2] == @board[6] || @board[2] == @board[5] && @board[2] == @board[8]
-        @winner_letter = @board[2]
-
-      elsif @board[3] == @board[4] && @board[3] == @board[5]
-        @winner_letter = @board[3]
-
-      elsif @board[6] == @board[7] && @board[6] == @board[8]
-        @winner_letter = @board[6]
-
-      end
+      # X + Y axis lines
+      line_check(0, 4, 8)
+      line_check(2, 4, 6)
 
       if @winner_letter.length == 1
         @game_is_on = false
