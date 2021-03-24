@@ -1,83 +1,53 @@
 #!/usr/bin/env ruby
-puts "Welcome to Ruby's Tic-Tac-Toe!"
+require_relative '../lib/player'
+require_relative '../lib/game_logic'
 
-puts "\nEnter Player 1 name:"
-player1 = gets.chomp.capitalize
+module TicTacToe
+  game = GameLogic.new
 
-puts "\nEnter Player 2 name:"
-player2 = gets.chomp.capitalize
+  puts "Welcome to Ruby's Tic-Tac-Toe!"
 
-puts "\n#{player1} will play with X and #{player2} will play with O"
+  puts "\nEnter Player 1 name:"
+  player1 = Player.new(gets.chomp.capitalize, 'X')
 
-puts "\nLets Start!"
-puts '[press ENTER to start]'
-gets
+  puts "\nEnter Player 2 name:"
+  player2 = Player.new(gets.chomp.capitalize, 'O')
 
-player_turn = player1
-cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-i = 0
+  puts "\n#{player1.name} will play with X and #{player2.name} will play with O"
 
-(0..cells.length - 1).each do |_i|
-  system('clear')
-  system('cls')
+  puts "\nLets Start!"
+  puts '[press ENTER to start]'
+  gets
 
-  puts "+---+---+---+\n| #{cells[0]} | #{cells[1]} | #{cells[2]} |"
-  puts '+---+---+---+'
-  puts "| #{cells[3]} | #{cells[4]} | #{cells[5]} |"
-  puts '+---+---+---+'
-  puts "| #{cells[6]} | #{cells[7]} | #{cells[8]} |\n+---+---+---+"
+  player_turn = player1
 
-  puts "\n"
-
-  puts "It's #{player_turn}'s turn!"
-
-  puts "\nPlease select an available cell from the board:"
-  cell = gets.chomp
-
-  while (cell =~ /\D/) || cell.empty? || cells[cell.to_i - 1] =~ /\D/
-    puts "\nInvalid move. please enter a number from 1-9"
-    cell = gets.chomp
-  end
-
-  if player_turn == player1
-    cells[cell.to_i - 1] = 'X'
-    player_turn = player2
-  else
-    cells[cell.to_i - 1] = 'O'
-    player_turn = player1
-  end
-
-  if i == 3
+  while game.game_is_on
     system('clear')
     system('cls')
 
-    puts "\nIt's a DRAW!"
+    puts game.show_board
 
-    puts "\n#{player1}, #{player2}, that was a great game!"
-    gets
+    puts "It's #{player_turn.name}'s turn!"
+
+    puts "\nPlease select an available cell from the board:"
+    cell = gets.chomp
+
+    until game.valid_cell?(cell)
+      puts "\nInvalid move. please enter a number from 1-9 that has not been taken yet."
+      cell = gets.chomp
+    end
+
+    game.set_position(cell.to_i, player_turn)
+
+    player_turn = player_turn == player1 ? player2 : player1
+
   end
-  i += 1
-end
 
-result = player1
+  system('clear')
+  system('cls')
 
-system('clear')
-system('cls')
+  puts game.show_board
 
-puts '+---+---+---+'
-puts "| #{cells[0]} | #{cells[1]} | #{cells[2]} |"
-puts '+---+---+---+'
-puts "| #{cells[3]} | #{cells[4]} | #{cells[5]} |"
-puts '+---+---+---+'
-puts "| #{cells[6]} | #{cells[7]} | #{cells[8]} |"
-puts '+---+---+---+'
-
-if result == player1 || result == player2
-  puts "\nCONGRATULATIONS!"
-  puts "\n#{result} you WIN the game!"
-
-else
-  puts "\nIt's a DRAW!"
-  puts "\n#{player1}, #{player2}, that was a great game!"
+  puts game.result
 
 end
