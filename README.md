@@ -1,6 +1,3 @@
-# tictactoe-ruby
-A simple tic tac toe game made with Ruby to play directly from the Terminal
-
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # Tic Tac Toe
