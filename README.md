@@ -12,6 +12,7 @@ A simple tic tac toe game made with Ruby to play directly from the Terminal
 Tic Tac Toe is a logical game for two players, each of them represented by one letter (X and O), where they take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner.
 
 This is how you can score a win in Tic Tac Toe:
+
 ![tic tac toe win](./img/tictactoe_win.png)
 
 
