@@ -47,9 +47,43 @@ module TicTacToe
 
     end
 
-    # FUNCTIONNAME method testing =======================================================================
+    # set_position method testing =======================================================================
+    describe "#set_position" do
 
-    
+      # If game incomplete or no winner, game will continue
+      it "Returns nil if there's no winner or the game is incomplete" do
+        game_logic = GameLogic.new
+        player1 = instance_double("John", :letter => 'X')
+        expect(game_logic.set_position(2, player1)).to eql(nil)
+      end
+
+      # player one wins. Meet one of the criteria for winning. Game stops
+      it "Returns string including 'CONGRATULATIONS!' if there's a winner" do
+        game_logic = GameLogic.new
+        player1 = instance_double("player_1",:name => "John", :letter => 'X')
+        player2 = instance_double("Maria", :letter => 'O')
+        game_logic.set_position(1, player1)
+        game_logic.set_position(2, player1)
+        expect(game_logic.set_position(3, player1)).to include("CONGRATULATIONS!")
+      end
+
+      # Game complete. No winner. Game stops
+      it "Returns string including 'TIE' if there's a draw" do
+        game_logic = GameLogic.new
+        player1 = instance_double("player_1",:name => "John", :letter => 'X')
+        player2 = instance_double("player_2",:name => "Maria", :letter => 'O')
+        game_logic.set_position(1, player1)
+        game_logic.set_position(2, player2)
+        game_logic.set_position(3, player1)
+        game_logic.set_position(5, player2)
+        game_logic.set_position(6, player1)
+        game_logic.set_position(7, player2)
+        game_logic.set_position(8, player1)
+        game_logic.set_position(4, player2)
+        expect(game_logic.set_position(9, player2)).to include("TIE")
+      end
+
+    end
   end
 
 end
