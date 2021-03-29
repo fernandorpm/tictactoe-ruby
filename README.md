@@ -66,6 +66,7 @@ After starting your game, here's how to play:
 
 - Go to the desired directory on your terminal
 - `git clone https://github.com/fernandorpm/tictactoe-ruby.git`
+- cd tictactoe-ruby
 
 ### Run
 
