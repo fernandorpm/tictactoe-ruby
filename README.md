@@ -71,6 +71,26 @@ After starting your game, here's how to play:
 
 - On your terminal, type `bin/main.rb`
 
+### Test
+
+In order to run the tests, first you have to have the rspec gem installed in your PC.
+For that, run `gem install rspec`
+
+Then you can check if the rspec was succesfully installed by running `rspec --version`.
+
+Finally, just as for the previous steps, you have to go to the project location on your computer. Then, run `rspec`.
+You can manipulate and check the tests on the following files, located in ./testing/spec:
+- `game_logic_spec.rb`
+- `player_spec.rb`
+
+#### Methods being tested
+
+Only public methods are being tested, as requested by the project. These methods are:
+- `GameLogic.valid_cell?`
+- `GameLogic.set_position`
+- `GameLogic.show_board`
+- `Player.initialize` - which is called by `Player.new`
+
 
 ## Authors
 

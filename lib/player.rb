@@ -6,5 +6,6 @@ module TicTacToe
       @name = name
       @letter = letter
     end
+    
   end
 end
