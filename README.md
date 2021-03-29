@@ -66,10 +66,31 @@ After starting your game, here's how to play:
 
 - Go to the desired directory on your terminal
 - `git clone https://github.com/fernandorpm/tictactoe-ruby.git`
+- cd tictactoe-ruby
 
 ### Run
 
 - On your terminal, type `bin/main.rb`
+
+### Test
+
+In order to run the tests, first you have to have the rspec gem installed in your PC.
+For that, run `gem install rspec`
+
+Then you can check if the rspec was succesfully installed by running `rspec --version`.
+
+Finally, just as for the previous steps, you have to go to the project location on your computer. Then, run `rspec`.
+You can manipulate and check the tests on the following files, located in ./testing/spec:
+- `game_logic_spec.rb`
+- `player_spec.rb`
+
+#### Methods being tested
+
+Only public methods are being tested, as requested by the project. These methods are:
+- `GameLogic.valid_cell?`
+- `GameLogic.set_position`
+- `GameLogic.show_board`
+- `Player.initialize` - which is called by `Player.new`
 
 
 ## Authors
@@ -79,6 +100,13 @@ After starting your game, here's how to play:
 - GitHub: [@fernandorpm](https://github.com/fernandorpm)
 - Twitter: [@rpm_fernando](https://twitter.com/rpm_fernando)
 - LinkedIn: [fernandorpm](https://linkedin.com/in/fernandorpm)
+
+👤 **John Arboleda**
+
+- Github: [@John-Arboleda](https://github.com/John-Arboleda)
+- Twitter: [@John_J_Arboleda](https://twitter.com/John_J_Arboleda
+)
+- Linkedin: [John Arboleda](https://www.linkedin.com/in/john-jairo-arboleda-castillo/)
 
 ## 🤝 Contributing
 
