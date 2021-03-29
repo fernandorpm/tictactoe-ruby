@@ -80,6 +80,13 @@ After starting your game, here's how to play:
 - Twitter: [@rpm_fernando](https://twitter.com/rpm_fernando)
 - LinkedIn: [fernandorpm](https://linkedin.com/in/fernandorpm)
 
+👤 **John Arboleda**
+
+- Github: [@John-Arboleda](https://github.com/John-Arboleda)
+- Twitter: [@John_J_Arboleda](https://twitter.com/John_J_Arboleda
+)
+- Linkedin: [John Arboleda](https://www.linkedin.com/in/john-jairo-arboleda-castillo/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
